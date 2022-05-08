@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -38,11 +39,16 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::post('/logout', [AuthController::class, 'logout']);
     // Create a new flight --- this should be removed or put behind some admin user
     Route::post('/flights', [FlightController::class, 'store']);
+    // Show all reservations for user
+    Route::get('/reservations', [ReservationController::class, 'index']);
+    // Show specific reservation
+    Route::get('/reservations/{flight_id}', [ReservationController::class, 'show']);
     // Create a reservation
-    
+    Route::post('/reservations', [ReservationController::class, 'store']);
     // Edit a reservation
-
+    Route::put('reservations/{id}', [ReservationController::class, 'update']);
     // Delete a reservation
+    Route::delete('reservations/{id}', [ReservationController::class, 'destroy']);
 
 });
 

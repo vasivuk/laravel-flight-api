@@ -21,7 +21,7 @@ class FlightController extends Controller
             'from' => 'required',
             'to' => 'required'
         ]);
-        
+
         $flight = Flight::create($formFields); 
     }
 }

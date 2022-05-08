@@ -44,7 +44,7 @@ class AuthController extends Controller
     public function login(Request $request) {
         $fields = $request->validate([
             'email' => 'required|string',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string'
         ]);
         
         //Check email
@@ -58,7 +58,6 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken('myapptoken')->plainTextToken;
-
         $response = [
             'user' => $user,
             'token' => $token
