@@ -19,8 +19,8 @@ class FlightFactory extends Factory
         return [
             'airline' => $this->faker->company(),
             'flight_start_time' => $this->faker->dateTime(),
-            'from' => random_int(1, 10),
-            'to' => random_int(1, 10)
+            'from' => $this->faker->city(),
+            'to' => $this->faker->city()
         ];
     }
 }
