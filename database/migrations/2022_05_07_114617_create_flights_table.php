@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('airline');
             $table->unsignedBigInteger('from');
             $table->unsignedBigInteger('to');
-            $table->dateTime("flight_start_time");
+            $table->dateTime("flight_start_time")->nullable();
             $table->foreign('from')->references('id')->on('locations');
             $table->foreign('to')->references('id')->on('locations');
         });
